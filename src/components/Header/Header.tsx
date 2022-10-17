@@ -4,8 +4,6 @@ import styles from './Header.module.scss'
 
 
 const Header = () => {
-
-    console.log(styles.wrapper)
     return (
         <header className={styles.header}>
             <div className={styles.wrapper}>

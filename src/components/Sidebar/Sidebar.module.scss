@@ -1,0 +1,28 @@
+.aside {
+  width: 160px;
+}
+
+.btn {
+  cursor: pointer;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 26px;
+  color: #111111;
+  margin: 0;
+}
+
+.listItem {
+  cursor: pointer;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.active {
+  color: #074ee8;
+}

@@ -1,0 +1,22 @@
+.card {
+  position: relative;
+  max-width: 445px;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+.description {
+  max-width: 244px;
+  margin: 20px 0 0 40px;
+  word-wrap: break-word;
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.price {
+  margin: 10px 0 0 40px;
+}

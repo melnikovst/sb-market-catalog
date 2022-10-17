@@ -1,0 +1,56 @@
+.main {
+  max-width: 1113px;
+  text-align: start;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainHeaderWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 72px 0 40px 0;
+  align-self: flex-end;
+  width: calc(100% - 190px);
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: 440px 440px;
+  gap: 30px 33px;
+}
+
+.sortType {
+  margin: 0 0 0 190px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 26px;
+}
+
+.counter {
+  margin: 0;
+  width: 160px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+}
+
+.route {
+  margin: 80px 0 25px 190px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #111111;
+}
+
+.columns {
+  display: flex;
+  column-gap: 30px;
+}
