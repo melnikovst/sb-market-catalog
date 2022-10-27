@@ -8,8 +8,7 @@
 
 .mainHeaderWrapper {
   display: flex;
-  justify-content: space-between;
-  margin: 72px 0 40px 0;
+  margin: 30px 0 40px 0;
   align-self: flex-end;
   width: calc(100% - 190px);
 }
@@ -27,6 +26,7 @@
   font-weight: 400;
   font-size: 30px;
   line-height: 26px;
+  height: 26px;
 }
 
 .counter {

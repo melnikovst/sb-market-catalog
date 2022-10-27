@@ -1,9 +1,16 @@
 import styles from './Card.module.scss';
 
 type ICard = {
-  img: string;
-  desc: string;
-  price: number;
+  img?: string | undefined;
+  desc?: string;
+  price?: number;
+  id?: number;
+  title?: string;
+  types?: number[];
+  sizes?: number[];
+  category?: number;
+  rating?: number;
+  sort?: number | undefined;
 };
 
 const Card: React.FC<ICard> = ({ img, desc, price }) => {
