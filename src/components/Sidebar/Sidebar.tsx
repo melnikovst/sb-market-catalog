@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import styles from './Sidebar.module.scss';
@@ -20,9 +20,6 @@ const Sidebar: React.FC = () => {
     (state: RootState) => state.sortSlice
   );
   const dispatch = useDispatch();
-
-  /*   const [maleActive, setMaleActive] = useState<number | undefined | null>();
-  const [femaleActive, setFemaleActive] = useState<number | undefined | null>(); */
 
   const femaleHandler = () => {
     dispatch(setIsFemaleOpen(!isFemaleOpen));
@@ -50,43 +47,44 @@ const Sidebar: React.FC = () => {
         <p className={styles.btn} onClick={femaleHandler}>
           женщины
         </p>
-        {isFemaleOpen &&
-          femaleList.map((item, i: number | undefined) => (
+        <ul className={isFemaleOpen ? `${styles.hidden} ${styles.open}` : `${styles.hidden}`}>
+          {femaleList.map((item, i: number | undefined) => (
             <p
-              key={i}
-              className={
-                femaleActive === i
-                  ? `${styles.listItem} ${styles.active}`
-                  : `${styles.listItem}`
-              }
-              onClick={() => {
-                dispatch(setFemaleActive(i));
-                dispatch(setFemale(item));
-              }}
+                key={i}
+                className={
+                  femaleActive === i
+                      ? `${styles.listItem} ${styles.active}`
+                      : `${styles.listItem}`
+                }
+                onClick={() => {
+                  dispatch(setFemaleActive(i));
+                  dispatch(setFemale(item));
+                }}
             >
               {item}
             </p>
-          ))}
+        ))}
+        </ul>
         <p className={styles.btn} onClick={maleHandler}>
           мужчины
         </p>
-        {isMaleOpen &&
-          maleList.map((item, i) => (
-            <p
-              key={i}
-              className={
-                maleActive === i
-                  ? `${styles.listItem} ${styles.active}`
-                  : `${styles.listItem}`
-              }
-              onClick={() => {
-                dispatch(setMaleActive(i));
-                dispatch(setMaleItem(item));
-              }}
-            >
-              {item}
-            </p>
+        <ul className={isMaleOpen ? `${styles.hidden} ${styles.open}` : `${styles.hidden}`}>
+          {maleList.map((item, i) => (<p
+                  key={i}
+                  className={
+                    maleActive === i
+                        ? `${styles.listItem} ${styles.active}`
+                        : `${styles.listItem}`
+                  }
+                  onClick={() => {
+                    dispatch(setMaleActive(i));
+                    dispatch(setMaleItem(item));
+                  }}
+              >
+                {item}
+              </p>
           ))}
+        </ul>
       </div>
     </aside>
   );

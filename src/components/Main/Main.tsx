@@ -1,6 +1,5 @@
 import Sidebar from '../Sidebar/Sidebar';
 import styles from './Main.module.scss';
-import sortMain from '../../images/sortMain.svg';
 import Card from '../Card/Card';
 import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux/es/exports';
@@ -46,7 +45,11 @@ const Main: React.FC = () => {
     }
     if (isMaleOpen) {
       if (maleActive === 0) {
-        return filterSuits.map((item, index) => <Card key={index} {...item} />);
+        return filterSuits.map((item, index) => {
+          console.log(item);
+
+          return <Card key={index} {...item} />;
+        });
       }
       if (maleActive === 1) {
         return filterPants.map((item, index) => <Card key={index} {...item} />);

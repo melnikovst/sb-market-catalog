@@ -1,7 +1,7 @@
 .aside {
   width: 160px;
   position: sticky;
-  top: 0px;
+  top: 0;
 }
 
 .sticky {
@@ -18,6 +18,20 @@
   line-height: 26px;
   color: #111111;
   margin: 0;
+}
+
+.hidden {
+  transform: scale(0);
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  transition: all 1s ease;
+}
+
+.open {
+  max-height: 200px;
+  display: block;
+  transform: scale(1);
 }
 
 .listItem {
