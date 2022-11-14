@@ -1,10 +1,11 @@
 import Sidebar from '../Sidebar/Sidebar';
 import styles from './Main.module.scss';
 import Card from '../Card/Card';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux/es/exports';
 import { RootState } from '../../redux/store';
 import all from '../../datas/all.json';
+import { ICard } from '../../@types/handlers';
 
 const Main: React.FC = () => {
   const {
@@ -21,13 +22,31 @@ const Main: React.FC = () => {
     <Card key={index} {...item} />
   ));
 
-  const filteredFemale = all.filter((item) => item.sizes && item);
-  const filteredMale = all.filter((item) => item.category === 1);
-  const filterFemale = all
+  const [cards, setCards] = useState<ICard[]>([]);
+
+  const fetchData = async () => {
+    try {
+      const preparsedData = await fetch(
+        'https://636d6ba391576e19e3281300.mockapi.io/cards'
+      );
+      const data = await preparsedData.json();
+      setCards(data);
+    } catch (error) {
+      console.log('не загрузилося(' + error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const filteredFemale = cards.filter((item) => item.sizes && item);
+  const filteredMale = cards.filter((item) => item.category === 1);
+  const filterFemale = cards
     .filter((item) => item.sizes && item)
     .map((item, index) => <Card key={index} {...item} />);
 
-  const filterMale = all
+  const filterMale = cards
     .filter((item) => item.category === 1 && item)
     .map((item, index) => <Card key={index} {...item} />);
 
@@ -117,7 +136,6 @@ const Main: React.FC = () => {
   useEffect(() => {
     handler();
   }, [female, maleItem, handler]);
-  console.log(maleItem);
 
   return (
     <section className={styles.main}>

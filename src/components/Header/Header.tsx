@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 
 const Header = () => {
-  const { isMaleOpen, isFemaleOpen, male } = useSelector(
+  const { isMaleOpen, isFemaleOpen, } = useSelector(
     (state: RootState) => state.sortSlice
   );
   const dispatch = useDispatch();

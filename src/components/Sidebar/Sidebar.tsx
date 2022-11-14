@@ -47,42 +47,53 @@ const Sidebar: React.FC = () => {
         <p className={styles.btn} onClick={femaleHandler}>
           женщины
         </p>
-        <ul className={isFemaleOpen ? `${styles.hidden} ${styles.open}` : `${styles.hidden}`}>
+        <ul
+          className={
+            isFemaleOpen
+              ? `${styles.hidden} ${styles.open}`
+              : `${styles.hidden}`
+          }
+        >
           {femaleList.map((item, i: number | undefined) => (
             <p
-                key={i}
-                className={
-                  femaleActive === i
-                      ? `${styles.listItem} ${styles.active}`
-                      : `${styles.listItem}`
-                }
-                onClick={() => {
-                  dispatch(setFemaleActive(i));
-                  dispatch(setFemale(item));
-                }}
+              key={i}
+              className={
+                femaleActive === i
+                  ? `${styles.listItem} ${styles.active}`
+                  : `${styles.listItem}`
+              }
+              onClick={() => {
+                dispatch(setFemaleActive(i));
+                dispatch(setFemale(item));
+              }}
             >
               {item}
             </p>
-        ))}
+          ))}
         </ul>
         <p className={styles.btn} onClick={maleHandler}>
           мужчины
         </p>
-        <ul className={isMaleOpen ? `${styles.hidden} ${styles.open}` : `${styles.hidden}`}>
-          {maleList.map((item, i) => (<p
-                  key={i}
-                  className={
-                    maleActive === i
-                        ? `${styles.listItem} ${styles.active}`
-                        : `${styles.listItem}`
-                  }
-                  onClick={() => {
-                    dispatch(setMaleActive(i));
-                    dispatch(setMaleItem(item));
-                  }}
-              >
-                {item}
-              </p>
+        <ul
+          className={
+            isMaleOpen ? `${styles.hidden} ${styles.open}` : `${styles.hidden}`
+          }
+        >
+          {maleList.map((item, i) => (
+            <p
+              key={i}
+              className={
+                maleActive === i
+                  ? `${styles.listItem} ${styles.active}`
+                  : `${styles.listItem}`
+              }
+              onClick={() => {
+                dispatch(setMaleActive(i));
+                dispatch(setMaleItem(item));
+              }}
+            >
+              {item}
+            </p>
           ))}
         </ul>
       </div>
