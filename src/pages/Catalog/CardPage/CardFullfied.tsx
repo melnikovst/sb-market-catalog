@@ -15,7 +15,7 @@ const CardFullfied: React.FC<ICard> = () => {
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
   const handleLeft = () => {
-    slideIndex <= 0 ? setSlideIndex(list.length - 2) : setSlideIndex(slideIndex => slideIndex - 1);
+    slideIndex <= 0 ? setSlideIndex(list.length - 1) : setSlideIndex(slideIndex => slideIndex - 1);
   };
   
   const handleRight = () => {
