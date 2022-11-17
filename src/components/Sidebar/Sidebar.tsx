@@ -13,6 +13,7 @@ import {
   setActiveM,
 } from '../../redux/sortSlice';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const femaleList: string[] = ['платья', 'топы', 'шорты'];
 
@@ -23,6 +24,7 @@ const Sidebar: React.FC = () => {
     (state: RootState) => state.sortSlice
   );
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const femaleHandler = () => {
     dispatch(setIsFemaleOpen(!isFemaleOpen));
@@ -59,6 +61,13 @@ const Sidebar: React.FC = () => {
     }
     dispatch(setBoth(false));
   }, [dispatch, isFemaleOpen, isMaleOpen]);
+
+  useEffect(() => {
+    if (pathname === '/') {
+      dispatch(setIsMaleOpen(false));
+      dispatch(setIsFemaleOpen(false));
+    }
+  }, [dispatch, pathname]);
 
   return (
     <aside className={styles.aside}>

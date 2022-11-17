@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux/es/exports';
 import { RootState } from '../../redux/store';
 import all from '../../datas/all.json';
 import { ICard } from '../../@types/handlers';
+import { useLocation } from 'react-router-dom';
 
 const Main: React.FC = () => {
   const {
