@@ -4,13 +4,13 @@ import { ICard } from '../../@types/handlers';
 
 const Card: React.FC<ICard> = ({ id, img, desc, price }) => {
   return (
-    <div className={styles.card}>
-      <Link to={`/catalog/${id}`}>
+    <Link className={styles.link} to={`/catalog/${id}`}>
+      <div className={styles.card}>
         <img src={img} alt="nazvanie" className={styles.image} />
-      </Link>
-      <p className={styles.description}>{desc}</p>
-      <p className={styles.price}>{price}&#x20bd;</p>
-    </div>
+        <p className={styles.description}>{desc}</p>
+        <p className={styles.price}>{price}&#x20bd;</p>
+      </div>
+    </Link>
   );
 };
 
