@@ -8,6 +8,9 @@ const initialState = {
   isMaleOpen: false,
   maleActive: null,
   femaleActive: null,
+  activeF: false,
+  activeM: false,
+  both: false,
 };
 
 const sortSlice = createSlice({
@@ -35,6 +38,15 @@ const sortSlice = createSlice({
     setFemaleActive(state, action: PayloadAction<any>) {
       state.femaleActive = action.payload;
     },
+    setActiveF(state, action: PayloadAction<boolean>) {
+      state.activeF = action.payload;
+    },
+    setActiveM(state, action: PayloadAction<boolean>) {
+      state.activeM = action.payload;
+    },
+    setBoth(state, action: PayloadAction<boolean>) {
+      state.both = action.payload;
+    },
   },
 });
 
@@ -46,6 +58,9 @@ export const {
   setIsMaleOpen,
   setFemaleActive,
   setMaleActive,
+  setActiveF,
+  setActiveM,
+  setBoth,
 } = sortSlice.actions;
 
 export default sortSlice.reducer;

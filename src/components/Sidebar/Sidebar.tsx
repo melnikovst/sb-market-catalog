@@ -2,14 +2,17 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import styles from './Sidebar.module.scss';
-import { setFemale, setMaleItem } from '../../redux/sortSlice';
+import { setBoth, setFemale, setMaleItem } from '../../redux/sortSlice';
 import {
   setIsFemaleOpen,
   setMale,
   setIsMaleOpen,
   setFemaleActive,
   setMaleActive,
+  setActiveF,
+  setActiveM,
 } from '../../redux/sortSlice';
+import { useEffect } from 'react';
 
 const femaleList: string[] = ['платья', 'топы', 'шорты'];
 
@@ -24,22 +27,38 @@ const Sidebar: React.FC = () => {
   const femaleHandler = () => {
     dispatch(setIsFemaleOpen(!isFemaleOpen));
     dispatch(setMale('женщины'));
+    dispatch(setActiveM(false));
+    dispatch(setActiveF(true));
     !isFemaleOpen && dispatch(setFemaleActive(null));
     !isFemaleOpen && dispatch(setFemale(''));
     if (isMaleOpen) {
       dispatch(setIsMaleOpen(false));
+      dispatch(setActiveM(false));
     }
   };
 
   const maleHandler = () => {
     dispatch(setIsMaleOpen(!isMaleOpen));
     dispatch(setMale('мужчины'));
+    dispatch(setActiveM(true));
+    dispatch(setActiveF(false));
     !isMaleOpen && dispatch(setMaleActive(null));
     !isMaleOpen && dispatch(setMaleItem(''));
     if (isFemaleOpen) {
       dispatch(setIsFemaleOpen(false));
+      dispatch(setActiveF(false));
     }
   };
+
+  useEffect(() => {
+    if (!isFemaleOpen && !isMaleOpen) {
+      dispatch(setActiveM(false));
+      dispatch(setBoth(true));
+      dispatch(setActiveF(false));
+      return;
+    }
+    dispatch(setBoth(false));
+  }, [dispatch, isFemaleOpen, isMaleOpen]);
 
   return (
     <aside className={styles.aside}>

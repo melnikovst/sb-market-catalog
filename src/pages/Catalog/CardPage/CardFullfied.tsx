@@ -1,7 +1,7 @@
 import styles from './CardFullfied.module.scss';
 import { ICard } from '../../../@types/handlers';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 
 interface stateObj {
   img: string;
@@ -15,12 +15,16 @@ const CardFullfied: React.FC<ICard> = () => {
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
   const handleLeft = () => {
-    slideIndex <= 0 ? setSlideIndex(list.length - 1) : setSlideIndex(slideIndex => slideIndex - 1);
+    slideIndex <= 0
+      ? setSlideIndex(list.length - 1)
+      : setSlideIndex((slideIndex) => slideIndex - 1);
   };
-  
+
   const handleRight = () => {
-    slideIndex >= list.length - 1 ? setSlideIndex(0) : setSlideIndex(slideIndex => slideIndex + 1);
-  }
+    slideIndex >= list.length - 1
+      ? setSlideIndex(0)
+      : setSlideIndex((slideIndex) => slideIndex + 1);
+  };
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -31,24 +35,29 @@ const CardFullfied: React.FC<ICard> = () => {
       setCard(data);
     };
     fetchCards();
-  }, []);
+  }, [id]);
+
   if (!card) {
     return <p>Грузится....</p>;
   }
-  const list = Object.values(card).slice(1, 5)
+  const list = Object.values(card).slice(1, 5);
 
-  
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
         <div className={styles.slider}>
-          <div className={styles.list} style={{ transform: `translateX(-${slideIndex * 385}px)` }}>
+          <div
+            className={styles.list}
+            style={{ transform: `translateX(-${slideIndex * 385}px)` }}
+          >
             {Object.values(card)
-                   .slice(1, 5)
-                   .map((item, index) => <img key={index} className={styles.image} src={item} alt="" />)}
+              .slice(1, 5)
+              .map((item, index) => (
+                <img key={index} className={styles.image} src={item} alt="" />
+              ))}
           </div>
-          <button className={styles.left_btn} onClick={() => handleLeft()}/>
-          <button className={styles.right_btn} onClick={() => handleRight()}/>
+          <button className={styles.left_btn} onClick={() => handleLeft()} />
+          <button className={styles.right_btn} onClick={() => handleRight()} />
         </div>
         <h4 className={styles.desc_title}>Описание товара:</h4>
         <p className={styles.description}>{card.desc}</p>

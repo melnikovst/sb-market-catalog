@@ -24,6 +24,7 @@
 }
 
 .link {
+  position: relative;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -32,6 +33,22 @@
   text-align: center;
   color: #000000;
   text-decoration: none;
+  background-size: 200%;
+  background-image: linear-gradient(to left, white 50%, black 50%);
+  background-position: right;
+  border: none;
+  padding: 15px;
+  border-radius: 25px;
+}
+
+.link:active {
+  top: 3px;
+}
+
+.link_active {
+  transition: all 0.4s ease;
+  color: white;
+  background-position: left;
 }
 
 .links {
