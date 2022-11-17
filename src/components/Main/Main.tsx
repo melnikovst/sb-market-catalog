@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux/es/exports';
 import { RootState } from '../../redux/store';
 import all from '../../datas/all.json';
 import { ICard } from '../../@types/handlers';
-import { useLocation } from 'react-router-dom';
+import Pagination from '../Pagination/Pagination';
 
 const Main: React.FC = () => {
   const {
@@ -17,37 +17,57 @@ const Main: React.FC = () => {
     isMaleOpen,
     maleActive,
     femaleActive,
+    both,
   } = useSelector((state: RootState) => state.sortSlice);
 
-  const preFilteredArray = all.map((item, index) => (
-    <Card key={index} {...item} />
-  ));
+  const { currentPage } = useSelector(
+    (state: RootState) => state.paginationSlice
+  );
 
   const [cards, setCards] = useState<ICard[]>([]);
-
-  const fetchData = async () => {
+  const [noPagination, setNoPagination] = useState<ICard[]>([]);
+  const fetchData = useCallback(async () => {
     try {
       const preparsedData = await fetch(
-        'https://636d6ba391576e19e3281300.mockapi.io/cards'
+        `https://636d6ba391576e19e3281300.mockapi.io/cards?page=${currentPage}&limit=10`
       );
       const data = await preparsedData.json();
       setCards(data);
     } catch (error) {
       console.log('не загрузилося(' + error);
     }
+  }, [currentPage]);
+
+  const saveCards = async () => {
+    try {
+      const preparsedData = await fetch(
+        'https://636d6ba391576e19e3281300.mockapi.io/cards'
+      );
+      const data = await preparsedData.json();
+      setNoPagination(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    fetchData();
+    saveCards();
   }, []);
 
-  const filteredFemale = cards.filter((item) => item.sizes && item);
-  const filteredMale = cards.filter((item) => item.category === 1);
-  const filterFemale = cards
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const preFilteredArray = cards.map((item, index) => (
+    <Card key={index} {...item} />
+  ));
+  const filteredFemale = noPagination.filter((item) => item.sizes && item);
+  const filteredMale = noPagination.filter((item) => item.category === 1);
+  const filterFemale = noPagination
     .filter((item) => item.sizes && item)
     .map((item, index) => <Card key={index} {...item} />);
 
-  const filterMale = cards
+  const filterMale = noPagination
     .filter((item) => item.category === 1 && item)
     .map((item, index) => <Card key={index} {...item} />);
 
@@ -154,6 +174,7 @@ const Main: React.FC = () => {
           <div className={styles.mainContainer}>{handleFilters()}</div>
         </div>
       </div>
+      {both && <Pagination />}
     </section>
   );
 };
