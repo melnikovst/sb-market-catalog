@@ -40,6 +40,9 @@ const CardFullfied: React.FC<ICard> = () => {
   if (!card) {
     return <p>Грузится....</p>;
   }
+
+  console.log(card);
+
   const list = Object.values(card).slice(1, 5);
 
   return (

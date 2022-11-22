@@ -73,34 +73,41 @@ const Header = () => {
           <img src={logo} alt="header-logo" />
         </Link>
         <nav className={styles.links}>
-          <button
-            className={
-              activeF
-                ? `${styles.link} ${styles.link_active}`
-                : `${styles.link}`
-            }
-            onClick={handleFemale}
-          >
-            женщины
-          </button>
-          <button
-            className={
-              activeM
-                ? `${styles.link} ${styles.link_active}`
-                : `${styles.link}`
-            }
-            onClick={handleMale}
-          >
-            мужчины
-          </button>
-          <button
-            className={
-              both ? `${styles.link} ${styles.link_active}` : styles.link
-            }
-            onClick={handleBoth}
-          >
-            все
-          </button>
+          {
+            <>
+              <Link
+                to={'/'}
+                className={
+                  activeF
+                    ? `${styles.link} ${styles.link_active}`
+                    : `${styles.link}`
+                }
+                onClick={handleFemale}
+              >
+                женщины
+              </Link>
+              <Link
+                to={'/'}
+                className={
+                  activeM
+                    ? `${styles.link} ${styles.link_active}`
+                    : `${styles.link}`
+                }
+                onClick={handleMale}
+              >
+                мужчины
+              </Link>
+              <Link
+                to={'/'}
+                className={
+                  both ? `${styles.link} ${styles.link_active}` : styles.link
+                }
+                onClick={handleBoth}
+              >
+                все
+              </Link>
+            </>
+          }
         </nav>
         <Link to={'/cart'} className={styles.cart} />
       </div>

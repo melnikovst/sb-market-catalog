@@ -9,6 +9,7 @@ const Pagination = () => {
   const dispatch = useDispatch();
 
   const onChangePage = (num: number) => {
+    window.scrollTo(0, 0);
     dispatch(setCurrentPage(num));
   };
 
@@ -26,7 +27,9 @@ const Pagination = () => {
             setActiveClass(i);
             onChangePage(i + 1);
           }}
-        />
+        >
+          {i + 1}
+        </button>
       ))}
     </div>
   );

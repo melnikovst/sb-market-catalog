@@ -8,6 +8,31 @@
   background-color: white;
 }
 
+.card_link {
+  position: relative;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 26px;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+  background-size: 200%;
+  background-image: linear-gradient(to left, white 50%, black 50%);
+  background-position: right;
+  border: 1px solid black;
+  padding: 15px;
+  border-radius: 25px;
+  width: 100%;
+  transition: all 1s ease;
+
+  &:hover {
+    color: white;
+    background-position: left;
+  }
+}
+
 .wrapper {
   display: flex;
   justify-content: space-between;
