@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sb-market-catalog/static/css/main.c70f7e06.css",
-    "main.js": "/sb-market-catalog/static/js/main.40840106.js",
+    "main.css": "/sb-market-catalog/static/css/main.e87dbf22.css",
+    "main.js": "/sb-market-catalog/static/js/main.b8362613.js",
     "static/media/Roboto.woff": "/sb-market-catalog/static/media/Roboto.59d18e163bfcd0607572.woff",
     "static/media/Roboto.woff2": "/sb-market-catalog/static/media/Roboto.806e04d8241d87f99a68.woff2",
     "static/media/arrow-left.png": "/sb-market-catalog/static/media/arrow-left.6534ab1e42d75198e15a.png",
@@ -9,11 +9,11 @@
     "static/media/headerLogo.svg": "/sb-market-catalog/static/media/headerLogo.e04cecb23e8da9266fd969fffb21c7a6.svg",
     "index.html": "/sb-market-catalog/index.html",
     "static/media/cart.svg": "/sb-market-catalog/static/media/cart.2efb467d045b327aeeaf.svg",
-    "main.c70f7e06.css.map": "/sb-market-catalog/static/css/main.c70f7e06.css.map",
-    "main.40840106.js.map": "/sb-market-catalog/static/js/main.40840106.js.map"
+    "main.e87dbf22.css.map": "/sb-market-catalog/static/css/main.e87dbf22.css.map",
+    "main.b8362613.js.map": "/sb-market-catalog/static/js/main.b8362613.js.map"
   },
   "entrypoints": [
-    "static/css/main.c70f7e06.css",
-    "static/js/main.40840106.js"
+    "static/css/main.e87dbf22.css",
+    "static/js/main.b8362613.js"
   ]
 }
